@@ -78,10 +78,10 @@ resource "null_resource" "catalogue_delete" {
 
   provisioner "local-exec" {
     # Bootstrap script called with private_ip of each node in the cluster
-    command = "aws ec2 terminate-instances --instance-ids ${module.catalogue.id}"
+    command = "aws ec2 terminate-instances --region=us-east-1 --instance-ids ${module.catalogue.id}"
   }
 
-  depends_on = [ aws_ami_from_instance.catalogue]
+  depends_on = [ aws_ami_from_instance.catalogue ]
 }
 
 resource "aws_launch_template" "catalogue" {
