@@ -13,35 +13,35 @@ pipeline {
     }   
     //build
     stages {
-        stage('VPC') {
-            steps {
-                sh """
-                    cd 01-vpc
-                    terraform init -reconfigure
-                    terraform destroy -auto-approve
-                """
-            }
-        }
+        // stage('VPC') {
+        //     steps {
+        //         sh """
+        //             cd 01-vpc
+        //             terraform init -reconfigure
+        //             terraform destroy -auto-approve
+        //         """
+        //     }
+        // }
 
-        stage('SG') {
-            steps {
-                sh """
-                    cd 02-sg
-                    terraform init -reconfigure
-                    terraform destroy -auto-approve
-                """
-            }
-        }
+        // stage('SG') {
+        //     steps {
+        //         sh """
+        //             cd 02-sg
+        //             terraform init -reconfigure
+        //             terraform destroy -auto-approve
+        //         """
+        //     }
+        // }
 
-        stage('VPN') {
-            steps {
-                sh """
-                    cd 03-vpn
-                    terraform init -reconfigure
-                    terraform destroy -auto-approve
-                """
-            }
-        }
+        // stage('VPN') {
+        //     steps {
+        //         sh """
+        //             cd 03-vpn
+        //             terraform init -reconfigure
+        //             terraform destroy -auto-approve
+        //         """
+        //     }
+        // }
         stage('DB ALB') {
             parallel {
                 stage('DB') {
